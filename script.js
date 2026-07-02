@@ -1,61 +1,148 @@
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mouseover', () => {
-        card.style.boxShadow = "0 0 15px #38bdf8";
-    });
+// ============================================
+// FOOTER YEAR
+// ============================================
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    card.addEventListener('mouseout', () => {
-        card.style.boxShadow = "none";
-    });
+// ============================================
+// NAVBAR: scrolled state + mobile toggle
+// ============================================
+const navbar = document.getElementById('navbar');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
 });
 
-const elements = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    elements.forEach(el => {
-        const position = el.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (position < screenHeight - 100) {
-            el.style.opacity = 1;
-            el.style.transform = "translateY(0)";
-        }
-    });
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-const cards = document.querySelectorAll('.card');
+// ============================================
+// SCROLL PROGRESS BAR + navbar shadow + active link
+// ============================================
+const progressBar = document.getElementById('scrollProgress');
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
-    cards.forEach(card => {
-        const pos = card.getBoundingClientRect().top;
-        if (pos < window.innerHeight - 50) {
-            card.style.opacity = 1;
-            card.style.transform = "translateY(0)";
-        }
+function onScroll() {
+    // progress
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+
+    // navbar background
+    navbar.classList.toggle('scrolled', scrollTop > 20);
+
+    // active nav link
+    let currentId = sections[0]?.id;
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 140) currentId = section.id;
     });
-});
-
-const skills = document.querySelectorAll(".progress");
-
-function animateSkills() {
-    skills.forEach(skill => {
-        const position = skill.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (position < screenHeight - 50) {
-            skill.style.width = skill.getAttribute("data-width");
-        }
+    navAnchors.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + currentId);
     });
 }
 
-window.addEventListener("scroll", animateSkills);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-const skillBlocks = document.querySelectorAll(".skill");
+// ============================================
+// STAT COUNTERS (animate once on view)
+// ============================================
+const statEls = document.querySelectorAll('.stat-value');
 
-skillBlocks.forEach(skill => {
-    const position = skill.getBoundingClientRect().top;
-    if (position < window.innerHeight - 50) {
-        skill.style.opacity = 1;
-        skill.style.transform = "translateY(0)";
+function animateCount(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1200;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target) + (progress === 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCount(entry.target);
+            statObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.6 });
+
+statEls.forEach(el => statObserver.observe(el));
+
+// ============================================
+// SCROLL-TRIGGERED REVEALS (sections + cards)
+// ============================================
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('in-view'), i * 80);
+            cardObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.card, .skill-card').forEach(el => cardObserver.observe(el));
+
+// ============================================
+// CONTACT FORM — AJAX submit via FormSubmit
+// ============================================
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('.form-submit');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const originalText = btnText.textContent;
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending...';
+    formStatus.textContent = '';
+    formStatus.className = 'form-status';
+
+    try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            formStatus.textContent = "Message sent — I'll get back to you soon.";
+            formStatus.classList.add('success');
+            contactForm.reset();
+        } else {
+            throw new Error('Request failed');
+        }
+    } catch (err) {
+        formStatus.textContent = "Something went wrong. Please email me directly instead.";
+        formStatus.classList.add('error');
+    } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = originalText;
     }
 });
-
