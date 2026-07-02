@@ -3,147 +3,530 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhukya Anjini Portfolio</title>
+<title>Bhukya Anjini — Backend Engineer & DSA Enthusiast</title>
+<meta name="description" content="Portfolio of Bhukya Anjini, CSE undergrad at IIT Bhubaneswar. Backend systems, databases, and 500+ LeetCode problems solved.">
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar">
+
+<div class="bg-aurora" aria-hidden="true"></div>
+<div class="bg-blobs" aria-hidden="true">
+    <span class="bg-blob-1"></span>
+    <span class="bg-blob-2"></span>
+    <span class="bg-blob-3"></span>
+    <span class="bg-blob-4"></span>
+    <span class="bg-blob-5"></span>
+    <span class="bg-blob-6"></span>
+    <span class="bg-blob-7"></span>
+    <span class="bg-blob-8"></span>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="navbar" id="navbar">
     <div class="logo">Anjini</div>
 
-    <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 </nav>
-<section class="hero">
-    <div class="hero-left">
-        <h3>Hello I'm</h3>
-        <h1>Bhukya Anjini</h1>
 
-        <p class="tagline">Software Engineering Intern Aspirant</p>
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-left">
+        <p class="hero-kicker">Software Engineering Intern Aspirant</p>
+
+        <h1 class="hero-name">Bhukya Anjini</h1>
+        <p class="tagline">Building efficient backend systems, one clean solution at a time.</p>
 
         <p class="intro">
-            I build efficient backend systems and solve complex problems
-            using data structures and algorithms.
+            I'm a CSE undergraduate at <strong>IIT Bhubaneswar</strong>, focused on backend
+            development, databases, and data structures &amp; algorithms. I enjoy turning
+            complex problems into simple, reliable systems.
         </p>
 
+        <div class="stat-row">
+            <a href="https://leetcode.com/u/anjini27/" target="_blank" rel="noopener" class="stat-chip stat-chip-link">
+                <span class="stat-value" data-count="500" data-suffix="+">0</span>
+                <span class="stat-label">LeetCode solved <i class="fa-solid fa-arrow-up-right-from-square stat-link-icon"></i></span>
+            </a>
+            <div class="stat-chip">
+                <span class="stat-value" data-count="2037">0</span>
+                <span class="stat-label">LeetCode rating</span>
+            </div>
+            <div class="stat-chip">
+                <span class="stat-value" data-count="8">0</span>
+                <span class="stat-label">Shipped projects</span>
+            </div>
+        </div>
+
         <div class="buttons">
-            <a href="resume.pdf" class="btn">Download Resume</a>
-            <a href="https://github.com/anjini27" class="btn-outline">GitHub</a>
+            <a href="#projects" class="btn">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="https://github.com/anjini27" target="_blank" rel="noopener" class="btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://leetcode.com/u/anjini27/" target="_blank" rel="noopener" class="btn-outline"><i class="fa-solid fa-code"></i> LeetCode</a>
         </div>
     </div>
 
     <div class="hero-right">
-        <img src="Anjini.jpeg" alt="Anjini">
+        <div class="photo-frame">
+            <img src="Anjini.jpeg" alt="Portrait of Bhukya Anjini" width="340" height="340">
+        </div>
     </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
 </section>
 
 <!-- ABOUT -->
-<section class="about">
-    <h2>About Me</h2>
-    <p>
-        I am a Computer Science student at IIT Bhubaneswar with a strong foundation in Data Structures,
-        Algorithms, and backend development. I have solved 400+ problems on LeetCode (rating: 2037),
-        which reflects my strong problem-solving skills.
+<section class="about reveal" id="about">
+    <p class="section-eyebrow">About</p>
+    <h2>Who I am</h2>
 
-        I enjoy building data-driven systems and working with databases, APIs, and efficient algorithms
-        to solve real-world problems.
-    </p>
+    <div class="about-grid">
+        <p class="about-text">
+            I'm a Computer Science student at <strong>IIT Bhubaneswar</strong> with a strong
+            foundation in Data Structures, Algorithms, and backend development.
+            I've solved <strong>500+ problems on LeetCode</strong> (rating: <strong>2037</strong>),
+            which reflects how I actually enjoy the grind of problem-solving.
+        </p>
+        <p class="about-text">
+            Outside of contests, I build data-driven systems — working with databases,
+            APIs, and efficient algorithms to solve real, occasionally messy,
+            real-world problems. Right now I'm exploring <strong>temporal graphs</strong>,
+            digging into how graph structures that change over time can be modeled and queried.
+        </p>
+
+        <div class="about-facts">
+            <div class="fact">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                    <h4>Education</h4>
+                    <p>B.Tech, Computer Science &amp; Engineering<br>IIT Bhubaneswar</p>
+                </div>
+            </div>
+            <div class="fact">
+                <i class="fa-solid fa-bullseye"></i>
+                <div>
+                    <h4>Currently building</h4>
+                    <p>A project on <strong>temporal graphs</strong> — while prepping for Software Engineering internships</p>
+                </div>
+            </div>
+            <div class="fact">
+                <i class="fa-solid fa-wrench"></i>
+                <div>
+                    <h4>Favourite tools</h4>
+                    <p>C++ for speed, Python for glue, SQL for truth</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="projects">
-    <h2>Projects</h2>
+<section class="projects reveal" id="projects">
+    <p class="section-eyebrow">Projects</p>
+    <h2>Things I've built</h2>
+    <p class="section-sub">A few systems and tools from my GitHub — click through for source code.</p>
 
-    <div class="card">
-        <h3>Online Book Management Platform</h3>
-        <p>Database-driven system to manage books, users, and transactions efficiently.</p>
-        <p>Developed Python-based backend to perform CRUD operations on structured datasets.</p>
-        <p>Identifies high-risk accident zones using data analysis techniques.</p>
-        <p>Structured normalized schema ensuring data consistency and reduced redundancy.</p>
-        <a href="https://github.com/anjini27/database-systems" target="_blank">View Project</a>
+    <h3 class="project-group-title"><i class="fa-solid fa-code-branch"></i> Personal Projects</h3>
+    <p class="project-group-sub">Self-directed builds, outside of coursework.</p>
+
+    <div class="project-grid">
+
+        <article class="card card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-server card-icon"></i>
+                <div class="card-tags">
+                    <span>C++</span><span>Systems</span>
+                </div>
+            </div>
+            <h3>Distributed Key-Value Store</h3>
+            <p>A key-value store sharded across multiple nodes with replication, built to explore consistency and fault-tolerance trade-offs.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-kv">
+                    <g class="viz-links">
+                        <line x1="130" y1="20" x2="60" y2="80"></line>
+                        <line x1="130" y1="20" x2="130" y2="80"></line>
+                        <line x1="130" y1="20" x2="200" y2="80"></line>
+                    </g>
+                    <g class="viz-node viz-client">
+                        <circle cx="130" cy="20" r="16"></circle>
+                        <text x="130" y="25" text-anchor="middle">C</text>
+                    </g>
+                    <g class="viz-node viz-shard viz-shard-1">
+                        <rect x="34" y="66" width="52" height="30" rx="6"></rect>
+                        <text x="60" y="86" text-anchor="middle">N1</text>
+                    </g>
+                    <g class="viz-node viz-shard viz-shard-2">
+                        <rect x="104" y="66" width="52" height="30" rx="6"></rect>
+                        <text x="130" y="86" text-anchor="middle">N2</text>
+                    </g>
+                    <g class="viz-node viz-shard viz-shard-3">
+                        <rect x="174" y="66" width="52" height="30" rx="6"></rect>
+                        <text x="200" y="86" text-anchor="middle">N3</text>
+                    </g>
+                </svg>
+            </div>
+
+            <a href="https://github.com/anjini27?tab=repositories" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-magnifying-glass-chart card-icon"></i>
+                <div class="card-tags">
+                    <span>C++</span><span>STL Map</span>
+                </div>
+            </div>
+            <h3>Log Analysis System</h3>
+            <p>Parses raw log files, counts INFO / WARNING / ERROR entries, and flags the most frequent error with an alert when it spikes.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-log">
+                    <g class="viz-log-row">
+                        <text x="8" y="26" class="viz-log-label">INFO</text>
+                        <rect x="60" y="14" width="150" height="14" rx="4" class="viz-log-track"></rect>
+                        <rect x="60" y="14" height="14" rx="4" class="viz-log-bar viz-log-info"></rect>
+                    </g>
+                    <g class="viz-log-row">
+                        <text x="8" y="58" class="viz-log-label">WARN</text>
+                        <rect x="60" y="46" width="150" height="14" rx="4" class="viz-log-track"></rect>
+                        <rect x="60" y="46" height="14" rx="4" class="viz-log-bar viz-log-warn"></rect>
+                    </g>
+                    <g class="viz-log-row">
+                        <text x="8" y="90" class="viz-log-label">ERROR</text>
+                        <rect x="60" y="78" width="150" height="14" rx="4" class="viz-log-track"></rect>
+                        <rect x="60" y="78" height="14" rx="4" class="viz-log-bar viz-log-error"></rect>
+                    </g>
+                </svg>
+            </div>
+
+            <a href="https://github.com/anjini27/log-analysis-system" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-calculator card-icon"></i>
+                <div class="card-tags">
+                    <span>C++</span><span>Parsing</span>
+                </div>
+            </div>
+            <h3>Scientific Calculator</h3>
+            <p>An expression parser and evaluator supporting trigonometric, log, and exponential functions with correct operator precedence.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-calc">
+                    <rect x="4" y="6" width="112" height="98" rx="6" class="viz-graph-panel"></rect>
+                    <polyline class="viz-graph-line" points="10,55 22,30 34,80 46,25 58,85 70,20 82,90 94,30 106,60 116,45"></polyline>
+                    <line x1="4" y1="55" x2="116" y2="55" class="viz-graph-axis"></line>
+
+                    <rect x="126" y="6" width="130" height="26" rx="6" class="viz-calc-screen"></rect>
+                    <text x="250" y="24" text-anchor="end" class="viz-calc-text">sin(x)</text>
+                    <g class="viz-calc-keys">
+                        <rect x="126" y="42" width="28" height="21" rx="4"></rect>
+                        <rect x="160" y="42" width="28" height="21" rx="4"></rect>
+                        <rect x="194" y="42" width="28" height="21" rx="4"></rect>
+                        <rect x="228" y="42" width="28" height="21" rx="4"></rect>
+                        <rect x="126" y="69" width="28" height="21" rx="4"></rect>
+                        <rect x="160" y="69" width="28" height="21" rx="4"></rect>
+                        <rect x="194" y="69" width="28" height="21" rx="4" class="viz-key-active"></rect>
+                        <rect x="228" y="69" width="28" height="21" rx="4"></rect>
+                    </g>
+                </svg>
+            </div>
+
+            <a href="https://github.com/anjini27?tab=repositories" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-triangle-exclamation card-icon"></i>
+                <div class="card-tags">
+                    <span>C++</span><span>K-Means</span>
+                </div>
+            </div>
+            <h3>Accident Area Detection</h3>
+            <p>Clusters accident-report data with K-Means and ranks the resulting zones by priority to flag high-risk areas in a city.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-map">
+                    <rect x="4" y="4" width="252" height="102" rx="8" class="viz-map-bg"></rect>
+                    <g class="viz-cluster viz-cluster-1">
+                        <circle cx="60" cy="40" r="26" class="viz-cluster-halo"></circle>
+                        <circle cx="52" cy="34" r="4"></circle>
+                        <circle cx="66" cy="30" r="4"></circle>
+                        <circle cx="60" cy="48" r="4"></circle>
+                        <circle cx="72" cy="46" r="4"></circle>
+                    </g>
+                    <g class="viz-cluster viz-cluster-2">
+                        <circle cx="150" cy="70" r="22" class="viz-cluster-halo"></circle>
+                        <circle cx="144" cy="66" r="4"></circle>
+                        <circle cx="158" cy="70" r="4"></circle>
+                        <circle cx="150" cy="78" r="4"></circle>
+                    </g>
+                    <g class="viz-cluster viz-cluster-3">
+                        <circle cx="212" cy="32" r="18" class="viz-cluster-halo"></circle>
+                        <circle cx="208" cy="30" r="4"></circle>
+                        <circle cx="218" cy="34" r="4"></circle>
+                    </g>
+                    <circle cx="100" cy="90" r="3" class="viz-map-dot"></circle>
+                    <circle cx="190" cy="88" r="3" class="viz-map-dot"></circle>
+                    <circle cx="30" cy="80" r="3" class="viz-map-dot"></circle>
+                </svg>
+            </div>
+
+            <a href="https://github.com/anjini27/Accident_Area_Detection_OfACity" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-progress card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-diagram-project card-icon"></i>
+                <div class="card-tags">
+                    <span class="tag-progress">In Progress</span>
+                </div>
+            </div>
+            <h3>Temporal Graphs</h3>
+            <p>Currently building — modeling and querying graphs whose structure evolves over time, with a focus on efficient traversal as edges change.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-temporal">
+                    <g class="viz-temporal-edges">
+                        <line x1="40" y1="30" x2="120" y2="20" class="viz-t-edge viz-t-edge-1"></line>
+                        <line x1="120" y1="20" x2="200" y2="35" class="viz-t-edge viz-t-edge-2"></line>
+                        <line x1="40" y1="30" x2="90" y2="80" class="viz-t-edge viz-t-edge-3"></line>
+                        <line x1="90" y1="80" x2="180" y2="75" class="viz-t-edge viz-t-edge-4"></line>
+                        <line x1="120" y1="20" x2="180" y2="75" class="viz-t-edge viz-t-edge-5"></line>
+                    </g>
+                    <g class="viz-temporal-nodes">
+                        <circle cx="40" cy="30" r="7"></circle>
+                        <circle cx="120" cy="20" r="7"></circle>
+                        <circle cx="200" cy="35" r="7"></circle>
+                        <circle cx="90" cy="80" r="7"></circle>
+                        <circle cx="180" cy="75" r="7"></circle>
+                    </g>
+                    <line x1="10" y1="102" x2="250" y2="102" class="viz-t-axis"></line>
+                    <circle cx="60" cy="102" r="2.5" class="viz-t-tick"></circle>
+                    <circle cx="120" cy="102" r="2.5" class="viz-t-tick"></circle>
+                    <circle cx="180" cy="102" r="2.5" class="viz-t-tick"></circle>
+                    <circle cx="240" cy="102" r="2.5" class="viz-t-tick viz-t-cursor"></circle>
+                </svg>
+            </div>
+
+            <span class="card-note"><i class="fa-solid fa-hammer"></i> Actively in development</span>
+        </article>
+
+        <article class="card card-visual">
+            <div class="card-top">
+                <i class="fa-solid fa-python card-icon"></i>
+                <div class="card-tags">
+                    <span>Python</span><span>GUI</span>
+                </div>
+            </div>
+            <h3>Python Mini Projects</h3>
+            <p>A collection of small Python builds exploring GUI design, automation, and everyday problem-solving.</p>
+
+            <div class="mini-viz" aria-hidden="true">
+                <svg viewBox="0 0 260 110" class="viz-mini-apps">
+                    <g class="viz-app viz-app-1">
+                        <rect x="14" y="14" width="100" height="36" rx="6"></rect>
+                        <circle cx="26" cy="26" r="3"></circle>
+                        <line x1="36" y1="26" x2="98" y2="26"></line>
+                        <line x1="26" y1="38" x2="70" y2="38"></line>
+                    </g>
+                    <g class="viz-app viz-app-2">
+                        <rect x="130" y="14" width="116" height="36" rx="6"></rect>
+                        <circle cx="142" cy="26" r="3"></circle>
+                        <line x1="152" y1="26" x2="222" y2="26"></line>
+                        <line x1="142" y1="38" x2="190" y2="38"></line>
+                    </g>
+                    <g class="viz-app viz-app-3">
+                        <rect x="14" y="62" width="116" height="36" rx="6"></rect>
+                        <circle cx="26" cy="74" r="3"></circle>
+                        <line x1="36" y1="74" x2="106" y2="74"></line>
+                        <line x1="26" y1="86" x2="80" y2="86"></line>
+                    </g>
+                    <g class="viz-app viz-app-4">
+                        <rect x="146" y="62" width="100" height="36" rx="6"></rect>
+                        <circle cx="158" cy="74" r="3"></circle>
+                        <line x1="168" y1="74" x2="230" y2="74"></line>
+                        <line x1="158" y1="86" x2="200" y2="86"></line>
+                    </g>
+                </svg>
+            </div>
+
+            <a href="https://github.com/anjini27/python_mini_projects" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
     </div>
 
-    <div class="card">
-        <h3>Log Analysis System</h3>
-        <p>Analyzes log files to detect error patterns using C++ and hashing.</p>
-        <p>Implemented frequency analysis using hash maps to identify recurring error messages.</p>
-        <p>Designed alert mechanism based on dynamic thresholds for critical system monitoring.</p>
-        <p>Optimized processing using single-pass parsing achieving O(n) time complexity.</p>
-        <a href="https://github.com/anjini27/log-analysis-system" target="_blank">View Project</a>
-    </div>
+    <h3 class="project-group-title"><i class="fa-solid fa-graduation-cap"></i> Course Projects</h3>
+    <p class="project-group-sub">Built as part of coursework at IIT Bhubaneswar.</p>
 
-    <div class="card">
-        <h3>Accident Detection System</h3>
-        <p>Implemented SQL queries (JOINs, filtering) for efficient book search, issue, and return operations.</p>
-        <p> Designed ranking model to prioritize accident-prone areas based on severity and frequency.</p>
-        <p>Improved data processing efficiency through optimized handling of structured datasets.</p>
-        <a href="https://github.com/anjini27/Accident_Area_Detection_OfACity" target="_blank">View Project</a>
-    </div>
+    <div class="project-grid project-grid-course">
 
+        <article class="card card-course">
+            <div class="card-top">
+                <i class="fa-solid fa-book-open card-icon"></i>
+                <div class="card-tags">
+                    <span>Python</span><span>SQL</span>
+                </div>
+            </div>
+            <h3>Online Book Management System</h3>
+            <p>A database-driven system to manage books, users, and transactions efficiently — built around clean schema design and query performance.</p>
+            <a href="https://github.com/anjini27/database-systems" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-course">
+            <div class="card-top">
+                <i class="fa-solid fa-network-wired card-icon"></i>
+                <div class="card-tags">
+                    <span>C</span><span>Networking</span>
+                </div>
+            </div>
+            <h3>Socket Programming</h3>
+            <p>Client-server communication built with raw sockets — covers connection handling, message framing, and basic network protocols.</p>
+            <a href="https://github.com/anjini27/Course_Projects" target="_blank" rel="noopener">
+                View source <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+        <article class="card card-more">
+            <i class="fa-brands fa-github card-icon-lg"></i>
+            <h3>More on GitHub</h3>
+            <p>13 repositories and counting — browse everything in one place.</p>
+            <a href="https://github.com/anjini27?tab=repositories" target="_blank" rel="noopener">
+                See all repos <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+        </article>
+
+    </div>
 </section>
 
 <!-- SKILLS -->
-<section class="skills" id="skills">
-    <h2>Skills</h2>
+<section class="skills reveal" id="skills">
+    <p class="section-eyebrow">Skills</p>
+    <h2>What I work with</h2>
 
     <div class="skills-grid">
 
         <div class="skill-card">
+            <i class="fa-solid fa-code"></i>
             <h3>Languages</h3>
-            <p>C, C++, Python,Cuda</p>
+            <div class="skill-tags">
+                <span>C</span><span>C++</span><span>Python</span>
+            </div>
         </div>
 
         <div class="skill-card">
+            <i class="fa-solid fa-diagram-project"></i>
             <h3>Core CS</h3>
-            <p>Data Structures and Algorithms, Operating Systems, Computer Networks, Database Systems</p>
+            <div class="skill-tags">
+                <span>Data Structures</span><span>Algorithms</span><span>Problem Solving</span>
+            </div>
         </div>
 
         <div class="skill-card">
+            <i class="fa-solid fa-database"></i>
             <h3>Database</h3>
-            <p>SQL, Database Design</p>
+            <div class="skill-tags">
+                <span>SQL</span><span>Schema Design</span><span>Query Optimization</span>
+            </div>
         </div>
 
         <div class="skill-card">
-            <h3>Tools</h3>
-            <p>AWS, Azure, Git</p>
-        </div>
-         <div class="skill-card">
-            <h3>Concepts</h3>
-            <p>REST APIs, Database Design, Problem Solving, Testing, Debugging</p>
+            <i class="fa-solid fa-cloud"></i>
+            <h3>Tools &amp; Cloud</h3>
+            <div class="skill-tags">
+                <span>Git</span><span>AWS</span><span>Azure</span>
+            </div>
         </div>
 
     </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact">
-    <h2>Contact</h2>
-    <div class="contact-box">
+<section class="contact reveal" id="contact">
+    <p class="section-eyebrow">Contact</p>
+    <h2>Get in Touch</h2>
+    <p class="section-sub">Open to Software Engineering internships and collaborations. Feel free to reach out.</p>
 
-        <p><i class="fas fa-envelope"></i> 
-            <a href="mailto:23cs02001@iitbbs.ac.in">23cs02001@iitbbs.ac.in</a>
-        </p>
+    <div class="contact-layout">
+        <div class="contact-box">
+            <p><i class="fas fa-envelope"></i>
+                <a href="mailto:23cs02001@iitbbs.ac.in">23cs02001@iitbbs.ac.in</a>
+            </p>
+            <p><i class="fab fa-github"></i>
+                <a href="https://github.com/anjini27" target="_blank" rel="noopener">github.com/anjini27</a>
+            </p>
+            <p><i class="fab fa-linkedin"></i>
+                <a href="https://linkedin.com/in/bhukya-anjini-509a54332" target="_blank" rel="noopener">
+                    linkedin.com/in/bhukya-anjini-509a54332
+                </a>
+            </p>
+            <p><i class="fa-solid fa-code"></i>
+                <a href="https://leetcode.com/u/anjini27/" target="_blank" rel="noopener">leetcode.com/u/anjini27</a>
+            </p>
+        </div>
 
-        <p><i class="fab fa-github"></i> 
-            <a href="https://github.com/anjini27" target="_blank">github.com/anjini27</a>
-        </p>
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/23cs02001@iitbbs.ac.in" method="POST">
+            <input type="hidden" name="_subject" value="New message from your portfolio site">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
 
-        <p><i class="fab fa-linkedin"></i> 
-            <a href="https://linkedin.com/in/bhukya-anjini-509a54332" target="_blank">
-                linkedin.com/in/bhukya-anjini-509a54332
-            </a>
-        </p>
+            <label>
+                <span>Name</span>
+                <input type="text" name="name" required placeholder="Your name">
+            </label>
+            <label>
+                <span>Email</span>
+                <input type="email" name="email" required placeholder="you@example.com">
+            </label>
+            <label>
+                <span>Message</span>
+                <textarea name="message" rows="5" required placeholder="Say hello..."></textarea>
+            </label>
 
+            <button type="submit" class="btn form-submit">
+                <span class="btn-text">Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <p class="form-status" id="formStatus" role="status"></p>
+        </form>
     </div>
 </section>
+
+<footer class="footer">
+    <p>Designed &amp; built by Bhukya Anjini &middot; <span id="year"></span></p>
+</footer>
 
 <script src="script.js"></script>
 
